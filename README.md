@@ -1,6 +1,16 @@
 # Case Study #1 - Danny's Diner
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            #p1 {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
 <img src="1.png" width="350">
 
+<head>
 <h3><a href : "[https://8weeksqlchallenge.com/case-study-1/]">Here's the challenge</a></h3>
 <p>Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite. Having this deeper connection with his customers will help him deliver a better and more personalised experience for his loyal customers.
 
@@ -26,6 +36,7 @@ LEFT JOIN menu m on s.product_id = m.product_id
 group by s.customer_id
 </p>
 <hr>
+
 <style>
 div {
     border-top: 4px dotted red;
@@ -33,3 +44,5 @@ div {
 </style>
 
 <div> This div has only top border which is red & dotted! </div>
+
+</head>
