@@ -31,7 +31,7 @@ group by s.customer_id
 </p>
 <hr>
 
-<div style="border: 1px solid black">Hello World</div>
+<div style="border: 1px red">Hello World</div>
 </body>
 </html>
 
