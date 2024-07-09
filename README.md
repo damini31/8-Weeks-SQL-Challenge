@@ -26,3 +26,10 @@ LEFT JOIN menu m on s.product_id = m.product_id
 group by s.customer_id
 </p>
 <hr>
+<style>
+div {
+    border-top: 4px dotted red;
+} 
+</style>
+
+<div> This div has only top border which is red & dotted! </div>
