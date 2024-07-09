@@ -1,1 +1,1 @@
-# damini31.github.io
+# Case Study #1 - Danny's Diner
