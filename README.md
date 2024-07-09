@@ -16,7 +16,7 @@ Danny has shared with you 3 key datasets for this case study:
 </ul>
 You can inspect the entity relationship diagram</p>
 
-<p style="border: 3px solid white">-- 1. What is the total amount each customer spent at the restaurant?</br> 
+<p style="border: 3px white">-- 1. What is the total amount each customer spent at the restaurant?</br> 
 select 
 s.customer_id,
 --m.product_id,
