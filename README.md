@@ -21,7 +21,7 @@ Danny has shared with you 3 key datasets for this case study:
 You can inspect the entity relationship diagram</p>
 <hr>
 <p style="background-color:LightGray"> 
-<h5>1. What is the total amount each customer spent at the restaurant?</h5>h5></br>
+<h3>1. What is the total amount each customer spent at the restaurant?</h3></br>
 select 
 </br>s.customer_id,
 </br>sum(m.price) as 'Total Amount'
