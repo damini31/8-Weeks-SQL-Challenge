@@ -159,3 +159,90 @@ select
 </p>
 
 <hr>
+
+<p> 
+<h3>9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?</h3>
+</br>select
+</br>s.customer_id,
+</br>sum(case
+   </br>when m.product_name = 'sushi' then m.price * 2 * 10
+   </br>else m.price * 10
+</br>end) as 'total_points'
+</br>from Sales s
+</br>LEFT JOIN menu m on s.product_id = m.product_id
+</br>group by s.customer_id
+</p>
+
+<hr>
+
+<p> 
+<h3>10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?</h3>
+</br>select 
+</br>s.customer_id,
+</br>sum(case
+   </br>when s.order_date between mem.join_date and dateadd(day,7,mem.join_date)  then m.price * 2 * 10
+  </br> when (s.order_date < mem.join_date or s.order_date > dateadd(day,7,mem.join_date)) and m.product_name = 'sushi' then  m.price * 2 * 10
+   </br>else m.price * 10
+</br>end) as 'total_points'
+</br>from Sales s
+</br>LEFT JOIN members mem on s.customer_id = mem.customer_id
+</br>LEFT JOIN menu m on s.product_id = m.product_id
+</br>where month(order_date) = 1
+</br>group by 
+</br>s.customer_id
+</p>
+
+<hr>
+
+<p> 
+<h3>/*Bonus Questions
+Join All The Things
+The following questions are related creating basic data tables that Danny and his team can use to quickly derive insights without needing to join the underlying tables using SQL.*/
+</h3>
+</br>select
+</br>s.customer_id,
+</br>s.order_date,
+</br>m.product_name,
+</br>m.price,
+</br>case
+  </br> when s.order_date < mem.join_date then 'N'
+   </br>when mem.join_date is null then 'N'
+   </br>else 'Y'
+</br>end as 'member'
+</br>from sales s
+</br>LEFT JOIN menu m on s.product_id = m.product_id
+</br>LEFT JOIN members mem on mem.customer_id = s.customer_id
+</br>order by customer_id,order_date,product_name
+</p>
+
+<hr>
+
+<p> 
+<h3>Rank All The Things
+Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
+</h3>
+</br>with t1 as
+</br>(select
+</br>s.customer_id,
+</br>s.order_date,
+</br>m.product_name,
+</br>m.price,
+</br>case
+   </br>when s.order_date < mem.join_date then 'N'
+   </br>when mem.join_date is null then 'N'
+   </br>else 'Y'
+</br>end as 'member'
+</br>from sales s
+</br>LEFT JOIN menu m on s.product_id = m.product_id
+</br>LEFT JOIN members mem on mem.customer_id = s.customer_id)
+</br>select 
+</br>t1.*,
+</br>case 
+   </br>when t1.member = 'Y' then dense_Rank() over (partition by t1.customer_id order by t1.member desc,t1.order_date asc)
+   </br>else null
+</br>end as 'ranking'
+</br>from t1
+</br>order by t1.customer_id,t1.order_date,t1.product_name
+</p>
+
+<hr>
