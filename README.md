@@ -21,13 +21,13 @@ Danny has shared with you 3 key datasets for this case study:
 You can inspect the entity relationship diagram</p>
 <hr>
 <p style="background-color:LightGray"> 
-1. What is the total amount each customer spent at the restaurant?</br> 
+<h5>1. What is the total amount each customer spent at the restaurant?</h5>h5></br>
 select 
-s.customer_id,
-sum(m.price) as 'Total Amount'
-from sales s
-LEFT JOIN menu m on s.product_id = m.product_id
-group by s.customer_id
+</br>s.customer_id,
+</br>sum(m.price) as 'Total Amount'
+</br>from sales s
+</br>LEFT JOIN menu m on s.product_id = m.product_id
+</br>group by s.customer_id
 </p>
 <hr>
 
