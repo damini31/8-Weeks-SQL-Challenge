@@ -4,6 +4,7 @@
 <img src="1.png" width="350">
 
 <head><h1># Case Study #1 - Danny's Diner</h1>
+<body>
 <h3><a href : "[https://8weeksqlchallenge.com/case-study-1/]">Here's the challenge</a></h3>
 <p>Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite. Having this deeper connection with his customers will help him deliver a better and more personalised experience for his loyal customers.
 
@@ -30,12 +31,7 @@ group by s.customer_id
 </p>
 <hr>
 
-<style>
-div {
-    border-top: 4px dotted red;
-} 
-</style>
-
-<div> This div has only top border which is red & dotted! </div>
+<div style="border: 1px solid black">Hello World</div>
+</body>
 </html>
 
