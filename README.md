@@ -1,2 +1,2 @@
 # Case Study #1 - Danny's Diner
-(1.png)
+<img src="1.png">
