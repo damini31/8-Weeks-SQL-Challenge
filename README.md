@@ -15,7 +15,7 @@ Danny has shared with you 3 key datasets for this case study:
 <li>members</li>
 </ul>
 You can inspect the entity relationship diagram</p>
-
+<hr>
 <p style="background-color:LightGray"> 
 1. What is the total amount each customer spent at the restaurant?</br> 
 select 
@@ -25,3 +25,4 @@ from sales s
 LEFT JOIN menu m on s.product_id = m.product_id
 group by s.customer_id
 </p>
+<hr>
