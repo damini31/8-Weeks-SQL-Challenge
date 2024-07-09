@@ -20,7 +20,7 @@ Danny has shared with you 3 key datasets for this case study:
 </ul>
 You can inspect the entity relationship diagram</p>
 <hr>
-<p style="background-color:LightGray"> 
+<p> 
 <h3>1. What is the total amount each customer spent at the restaurant?</h3></br>
 select 
 </br>s.customer_id,
@@ -31,7 +31,33 @@ select
 </p>
 <hr>
 
-<div style="border: 1px red">Hello World</div>
-</body>
-</html>
+<p> 
+<h3>2. How many days has each customer visited the restaurant?</h3>
+</br>select 
+</br>customer_id,
+</br>count(distinct(order_date)) as 'Customer Visits'
+</br>from sales
+</br>group by customer_id
+</p>
+<hr>
+<hr>
+
+<p> 
+<h3>3. What was the first item from the menu purchased by each customer?</h3>
+</br>with t1 as
+</br>(select 
+</br>s.*,
+</br>m.product_name,
+</br>ROW_NUMBER() over (partition by customer_id order by order_date asc) as 'order_num'
+</br>from Sales s
+</br>LEFT JOIN menu m on s.product_id = m.product_id)
+</br>select 
+</br>t1.customer_id,
+</br>t1.order_date,
+</br>t1.product_name 
+</br>from t1
+</br>where t1.order_num = 1;
+</p>
+<hr>
+
 
